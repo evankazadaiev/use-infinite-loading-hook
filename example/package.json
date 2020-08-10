@@ -17,11 +17,15 @@
     "@types/node": "link:../node_modules/@types/node",
     "@types/react": "link:../node_modules/@types/react",
     "@types/react-dom": "link:../node_modules/@types/react-dom",
+    "axios": "^0.19.2",
+    "node-sass": "^4.14.1",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-scripts": "link:../node_modules/react-scripts",
-    "typescript": "link:../node_modules/typescript",
-    "react-use-infinite-scroll": "link:.."
+    "react-svg-spinner": "^1.0.4",
+    "react-use-infinite-scroll": "link:..",
+    "sass-loader": "^9.0.3",
+    "typescript": "link:../node_modules/typescript"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
