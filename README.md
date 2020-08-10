@@ -7,21 +7,38 @@
 ## Install
 
 ```bash
-npm install --save react-use-infinite-scroll
+NPM 
+npm install --save react-use-infinite-loading
+-------------
+YARN
+yarn add react-use-infinite-loading
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
+import useInfiniteLoading from 'react-use-infinite-loading'
 
-import MyComponent from 'react-use-infinite-scroll'
-import 'react-use-infinite-scroll/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const Example = () => {
+  const [ref, containerRef, isLoading] = useInfiniteLoading({
+     hasMore: true,
+     offset: 250, // distance to Loader ref to fire callback before
+     direction: 'bottom', // scroll direction, top or bottom
+     callback: getImages, 
+   });
+    return (
+        <div ref={containerRef}>
+          <div className="gallery">
+            ... LIST ...
+          </div>
+          <Loader ref={ref}>
+            {isLoading && <Spinner />}
+          </Loader>
+        </div>
+      ); 
+  
 }
 ```
 
