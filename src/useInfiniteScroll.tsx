@@ -32,17 +32,14 @@ export const useInfiniteScroll = ({
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [page, setPage] = useState<any>(startPage)
 
-  const intersectionRef = useRef<any>(0)
   const setRef = useCallback((node?: HTMLElement) => {
     if (node) {
-      // @ts-ignore
       ref.current = node
     }
   }, [])
 
   const setContainerRef = useCallback((node?: HTMLElement) => {
     if (node) {
-      // @ts-ignore
       containerRef.current = node
     }
   }, [])
@@ -75,9 +72,6 @@ export const useInfiniteScroll = ({
     const loadMore = async (entries: any) => {
       entries.forEach(({ isIntersecting }: any) => {
         if (isIntersecting && !isLoading) {
-          intersectionRef.current = intersectionRef.current + 1
-
-          if (intersectionRef.current === 1) return
           setPage((prev: number) => prev + 1)
         }
       })
