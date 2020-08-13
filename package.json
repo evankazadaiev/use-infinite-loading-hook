@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
+  "keywords": ["react-infinite-scroll", "react-infinite-scroll-hook", "react-infinite-scroller", "react-use-infinite-scroll", "use-infinite-scroll"],
   "engines": {
     "node": ">=10"
   },
