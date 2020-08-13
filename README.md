@@ -24,7 +24,7 @@ yarn add react-use-infinite-loading
 | callback      |Function | api request   | true     |-                |
 | hasMore       | Boolean |   if server has more items for us | true | - |
 | startPage     | Number  |  Start page   | false    | 1 |
-| offset | Distance for sending request before end of scrolling container | false | 250 |
+| offset | Number |Distance for sending request before end of scrolling container | false | 250 |
 | direction | String // top or bottom | Scroll direction | false | bottom |
  
 ## Usage
