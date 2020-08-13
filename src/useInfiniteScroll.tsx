@@ -3,7 +3,7 @@ import {
   useEffect,
   useLayoutEffect,
   useRef,
-  useCallback,
+  useCallback
 } from 'react'
 
 interface Props {
