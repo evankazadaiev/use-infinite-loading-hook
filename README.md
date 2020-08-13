@@ -17,6 +17,14 @@ YARN
 yarn add react-use-infinite-loading
 ```
 
+## Options
+
+| Option        | Type |  Description     | Required |  Default value  |
+| --------------|--------:| :------------:|----------|----------------:|
+| callback      |Function | api request   | true     |-                |
+| hasMore       | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 ## Usage
 
 ```tsx
