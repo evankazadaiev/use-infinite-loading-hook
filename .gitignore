@@ -1,8 +1,8 @@
 
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-## IDE
-#.idea
+#IDE
+.idea
 
 # dependencies
 node_modules
