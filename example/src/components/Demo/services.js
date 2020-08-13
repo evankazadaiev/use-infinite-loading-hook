@@ -1,17 +1,18 @@
 import axios from 'axios';
 
-export const getServerImages = async (page, limit) => {
+export const getPokemons = async (page, limit) => {
   const response = await axios({
     method: 'GET',
-    url: 'https://api.thecatapi.com/v1/images/search',
+    url: 'https://pokeapi.co/api/v2/pokemon/',
     headers: {
-      'x-api-key': '3cdc845e-5d4c-44aa-a433-e5938a053106'
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     params: {
       limit,
-      page
+      offset: page === 1 ? 0 : page * limit,
     }
   });
   
-  return response.data;
+  return response.data.results;
 };

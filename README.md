@@ -1,4 +1,4 @@
-# react-use-infinite-scroll
+# react-use-infinite-loading
 
 > Infinite scroll hook for React
 
@@ -22,24 +22,35 @@ import useInfiniteLoading from 'react-use-infinite-loading'
 
 
 const Example = () => {
-  const [ref, containerRef, isLoading] = useInfiniteLoading({
-     hasMore: true,
-     offset: 250, // distance to Loader ref to fire callback before
-     direction: 'bottom', // scroll direction, top or bottom
-     callback: getImages, 
-   });
-    return (
-        <div ref={containerRef}>
-          <div className="gallery">
-            ... LIST ...
-          </div>
-          <Loader ref={ref}>
-            {isLoading && <Spinner />}
-          </Loader>
-        </div>
-      ); 
+  const [pokemons, setPokemons] = useState(null);
   
-}
+  const getImages = (page) => new Promise(async (resolve) => {
+    const res = await getPokemons(page, 100);
+    setPokemons(prev => (prev ? [...prev, ...res] : res));
+  
+    resolve(res);
+  });
+  
+
+  const [ref, containerRef, isLoading] = useInfiniteScroll({
+    hasMore: true, // if server-side has more items for us
+    offset: 100, // send request 100px before the end of scrolling container
+    direction: 'bottom', // scroll direction
+    callback: getImages, // api request
+  });
+
+  return (
+    <div ref={containerRef}>
+      <ul className="gallery">
+        {pokemons &&
+        pokemons.map((pokemon, idx) => (
+            <Child {...pokemon} key={idx}/>
+          ))}
+      </ul>
+      <Loader ref={ref}>{ isLoading && <Spinner color="goldenrod" size="64px" thickness={2} />}</Loader>
+    </div>
+  );
+};
 ```
 
 ## License

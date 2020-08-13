@@ -3,7 +3,7 @@ import {
   useEffect,
   useLayoutEffect,
   useRef,
-  useCallback
+  useCallback,
 } from 'react'
 
 interface Props {
@@ -27,19 +27,22 @@ export const useInfiniteScroll = ({
   direction = DIRECTIONS.BOTTOM
 }: Props) => {
   const ref = useRef<any>(null)
+  const [firstScroll, setFirstScroll] = useState<boolean>(false)
   const containerRef = useRef<any>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [page, setPage] = useState<any>(startPage)
 
   const intersectionRef = useRef<any>(0)
-  const setRef = useCallback((node: any) => {
+  const setRef = useCallback((node?: HTMLElement) => {
     if (node) {
+      // @ts-ignore
       ref.current = node
     }
   }, [])
 
-  const setContainerRef = useCallback((node: any) => {
+  const setContainerRef = useCallback((node?: HTMLElement) => {
     if (node) {
+      // @ts-ignore
       containerRef.current = node
     }
   }, [])
@@ -90,17 +93,19 @@ export const useInfiniteScroll = ({
   }, [ref, hasMore, isLoading])
 
   useLayoutEffect(() => {
-    console.log(containerRef)
-    if (direction === DIRECTIONS.TOP) {
-      // window.scrollTo({ block: 'end', behavior: 'smooth' })
+    if (direction === DIRECTIONS.TOP && !firstScroll) {
       containerRef.current.scrollIntoView({
-        behavior: 'smooth',
         block: 'end',
         inline: 'nearest'
       })
-      // containerRef.current.scrollTo(0, containerRef.current.scrollHeight)
     }
-  }, [containerRef])
+  })
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => setFirstScroll(true))
+    return () =>
+      window.removeEventListener('scroll', () => setFirstScroll(true))
+  }, [])
 
   return [setRef, setContainerRef, isLoading]
 }

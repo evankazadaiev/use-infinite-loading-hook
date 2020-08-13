@@ -4,7 +4,7 @@
   "description": "Infinite scroll hook for React",
   "author": "evankazadaiev",
   "license": "MIT",
-  "repository": "evankazadaiev/react-use-infinite-scroll",
+  "repository": "https://github.com/evankazadaiev/use-infinite-loading-hook",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
