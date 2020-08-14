@@ -14,5 +14,8 @@ export const getPokemons = async (page, limit) => {
     }
   });
   
-  return response.data.results;
+  return {
+    next: response.data.next,
+    results: response.data.results
+  };
 };

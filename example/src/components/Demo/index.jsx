@@ -8,17 +8,18 @@ import './styles.css';
 
 const Demo = () => {
   const [pokemons, setPokemons] = useState(null);
+  const [hasNextPage, setNextPage] = useState(null);
   
   const getImages = (page) => new Promise(async (resolve) => {
-    const res = await getPokemons(page, 100);
-    setPokemons(prev => (prev ? [...prev, ...res] : res));
-  
-    resolve(res);
+    const { results, next } = await getPokemons(page, 100);
+    setPokemons(prev => (prev ? [...prev, ...results] : results));
+    setNextPage(!!next);
+    resolve(results);
   });
   
 
   const [ref, containerRef, isLoading] = useInfiniteScroll({
-    hasMore: true,
+    hasMore: hasNextPage,
     offset: 100,
     direction: 'bottom',
     callback: getImages,

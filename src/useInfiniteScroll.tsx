@@ -59,6 +59,8 @@ export const useInfiniteScroll = ({
   }, [page])
 
   useLayoutEffect(() => {
+    if (!hasMore) return
+
     const currentRef = ref.current
 
     const options = {
