@@ -10,13 +10,8 @@ interface Props {
   callback: (page: number) => void
   hasMore: boolean
   startPage: number
-  direction: string
+  direction?: 'bottom' | 'top'
   offset: number
-}
-
-const DIRECTIONS = {
-  BOTTOM: 'bottom',
-  TOP: 'top'
 }
 
 export const useInfiniteScroll = ({
@@ -24,7 +19,7 @@ export const useInfiniteScroll = ({
   hasMore,
   startPage = 1,
   offset = 250,
-  direction = DIRECTIONS.BOTTOM
+  direction
 }: Props) => {
   const ref = useRef<any>(null)
   const [firstScroll, setFirstScroll] = useState<boolean>(false)
@@ -53,7 +48,7 @@ export const useInfiniteScroll = ({
   useEffect(() => {
     const func = async () => {
       await fetchData(page)
-      if (direction === DIRECTIONS.TOP) containerRef.current.scrollTo(0, offset)
+      if (direction === 'top') containerRef.current.scrollTo(0, offset)
     }
     func()
   }, [page])
@@ -66,7 +61,7 @@ export const useInfiniteScroll = ({
     const options = {
       root: null,
       rootMargin:
-        direction === DIRECTIONS.BOTTOM
+        direction === 'bottom'
           ? `0px 0px ${offset}px 0px`
           : `${offset}px 0px 0px 0px`
     }
@@ -89,7 +84,7 @@ export const useInfiniteScroll = ({
   }, [ref, hasMore, isLoading])
 
   useLayoutEffect(() => {
-    if (direction === DIRECTIONS.TOP && !firstScroll) {
+    if (direction === 'top' && !firstScroll) {
       containerRef.current.scrollIntoView({
         block: 'end',
         inline: 'nearest'

@@ -1,15 +1,17 @@
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const Child = ({ url, name }) => (
-  <figure
-    key={name}
-    className={`gallery__item gallery__item--${name}`}
-  >
-    <img
-      src={url}
+const Child = ({ url, name, thumbnailUrl }) => (
+  <div className={`gallery__item gallery__item--${name}`}>
+    <LazyLoadImage
+      alt="img"
+      visibleByDefault
+      effect='blur'
       className="gallery__img"
-      alt="Image"/>
-  </figure>
+      src={url}
+      placeholderSrc={thumbnailUrl}
+    />
+  </div>
 )
 
 export default Child;

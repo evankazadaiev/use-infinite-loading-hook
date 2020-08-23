@@ -1,14 +1,28 @@
 {
   "name": "react-use-infinite-loading",
-  "version": "1.1.4",
-  "description": "Infinite scroll hook for React",
+  "version": "1.1.5",
+  "description": "Infinite scroll hook for React. Supports multiple scroll directions.",
   "author": "evankazadaiev",
   "license": "MIT",
   "repository": "https://github.com/evankazadaiev/use-infinite-loading-hook",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
-  "keywords": ["react-infinite-scroll", "react-infinite-scroll-hook", "react-infinite-scroller", "react-use-infinite-scroll", "use-infinite-scroll"],
+  "keywords": [
+    "react-infinite-scroll",
+    "react-infinite-scroll-hook",
+    "react-infinite-scroller",
+    "react-use-infinite-scroll",
+    "use-infinite-scroll",
+    "react infinite scroll",
+    "react use infinite scroll",
+    "infinite scroll",
+    "react-infinite-scrolling",
+    "react infinite scroller",
+    "react infinite scrolling",
+    "react scrolling",
+    "infinite scrolling"
+  ],
   "engines": {
     "node": ">=10"
   },

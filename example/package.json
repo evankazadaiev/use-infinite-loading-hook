@@ -21,6 +21,7 @@
     "node-sass": "^4.14.1",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
+    "react-lazy-load-image-component": "^1.5.0",
     "react-scripts": "link:../node_modules/react-scripts",
     "react-svg-spinner": "^1.0.4",
     "react-use-infinite-scroll": "link:..",
